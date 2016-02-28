@@ -1,2 +1,4 @@
-Practical1/train
-Practical1/test
+## Ignore the Data file 
+practicla2/data
+.DS_Store
+.ipynb_checkpoints
