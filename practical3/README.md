@@ -1,4 +1,4 @@
-[Baseline Model](https://github.com/markreinke/cs181-practicals/blob/master/practical3/Main%20Mark.ipynb) [^1]
+[Baseline Model](https://github.com/markreinke/cs181-practicals/blob/master/practical3/Main%20Mark.ipynb)*
 
 [Baseline Ridge Regression + Baseline Ridge Regression (scaled target values)](...)
 
@@ -8,4 +8,4 @@
 
 
 
-[^1]: Includes code by Rahul Dave (Head TF CS109 fall term 2015)
+* Includes code by Rahul Dave (Head TF CS109 fall term 2015)
