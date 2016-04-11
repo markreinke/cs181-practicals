@@ -1,4 +1,4 @@
-[Baseline Models](https://github.com/markreinke/cs181-practicals/blob/master/practical3/Main%20Mark.ipynb)
+[Baseline Models](https://github.com/markreinke/cs181-practicals/blob/master/practical3/Main%20Mark.ipynb)*
 
 [GraphLab - Item Similarity & Factorization](https://github.com/markreinke/cs181-practicals/blob/master/practical3/Main_Seb.ipynb)
 
