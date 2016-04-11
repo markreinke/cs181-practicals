@@ -8,4 +8,4 @@
 
 
 
-* Includes code by Rahul Dave (Head TF CS109 fall term 2015)
+\* Includes code by Rahul Dave (Head TF CS109 fall term 2015)
