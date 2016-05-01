@@ -4,8 +4,10 @@
 
 - <u>Model Based</u>
 
-Model_Based.ipynb
 Model_Based.py 
+qlearner.py
+Model_Based.ipynb
+QLearner.ipynb
 
 ### Run Procedures 
 
