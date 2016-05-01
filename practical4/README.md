@@ -9,15 +9,15 @@ Model_Based.py
 
 ### Run Procedures 
 
-- <u>Model Based:</u> 
+- <u>Model-Based:</u> 
 
 ```shell
-~/anaconda2/bin/python Model_Based.py
+python Model_Based.py
 ```
 
-- <u>Model Free</u>
+- <u>Model-Free</u>
 
 ```
-~/anaconda2/bin/python QLearner.py
+python qlearner.py
 ```
 
