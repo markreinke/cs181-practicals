@@ -29,10 +29,10 @@ class ModelBasedLearner:
         # Keep track of all states while running
         self.list_of_states = [] #To store list of all States
         
-        ### New Initialisation (Following Mark)
+        ### Initialisation of Q function, Rewards, Transition
         self.Q                   = defaultdict(lambda: [0,0]) #Q[States][Action]
         self.R                   = defaultdict(lambda: [[0,1] , [0,1]]) # R[States][action][n,tot]
-        self.P                   = defaultdict(lambda: [[0,1] , [0,1]]) # R[States_prev, states][action][n,tot]
+        self.T                   = defaultdict(lambda: [[0,1] , [0,1]]) # T[States_prev, states][action][n,tot]
         
 
     def convert_state(self, state):
@@ -41,7 +41,6 @@ class ModelBasedLearner:
         speed_thresh   = 0
         
         monkey_tree_top_dist = (state['monkey']['top'] - state['tree']['top']) / binsize   
-        #monkey_tree_bot_dist = (state['monkey']['bot'] - state['tree']['bot'])/ binsize
 
         monkey_near_top      = (self.screen_height - state['monkey']['top']) < dist_thresh
         monkey_near_bottom   = state['monkey']['bot']                 < dist_thresh
@@ -63,10 +62,10 @@ class ModelBasedLearner:
             return (self.Q[state][0],0)
     
     def UpdateT(self, state_i):
-        self.P[self.previous_state, state_i][self.previous_action][0] += 1
+        self.T[self.previous_state, state_i][self.previous_action][0] += 1
         # Update Count
         for state in self.list_of_states:
-            self.P[self.previous_state, state][self.previous_action][1] += 1
+            self.T[self.previous_state, state][self.previous_action][1] += 1
                 
     def UpdateR(self):
         self.R[self.previous_state][self.previous_action][0] += self.previous_reward
@@ -75,7 +74,7 @@ class ModelBasedLearner:
         
     def GetProbability(self, previous_state, state, action):
         # Prob = N / ToT
-        return self.P[previous_state,state][action][0] / self.P[previous_state,state][action][1]
+        return self.T[previous_state,state][action][0] / self.T[previous_state,state][action][1]
     
     def GetAverageR(self, state, action):
         return self.R[state][action][0] / self.R[state][action][1]
@@ -96,8 +95,6 @@ class ModelBasedLearner:
              
     
     def action_callback(self, state):
-        
-        #state_i = State(state['tree']['dist'],state['monkey']['bot'], state['tree']['bot'])
         state_i = self.convert_state(state)
 
         if self.previous_state != None:
@@ -106,13 +103,10 @@ class ModelBasedLearner:
             self.UpdateQ(state_i)
 
             # Decide which action
-            if self.Q[state_i][0] < self.Q[state_i][1]:
-                self.previous_action = 1
-            else:
-                self.previous_action = 0
+            self.previous_action = np.argmax([self.Q[state_i][0],self.Q[state_i][1]])
                 
         else:
-            self.previous_action = random.random() < 0.1
+            self.previous_action = random.random() < 0
 
         #Memory Save Previous state
         self.previous_state = state_i
@@ -157,7 +151,7 @@ if __name__ == '__main__':
 	hist = []
 
 	# Run games. 
-	run_games(agent, hist, 20, 10)
+	run_games(agent, hist, 100, 10)
 
 	# Save history. 
 	np.save('hist',np.array(hist))

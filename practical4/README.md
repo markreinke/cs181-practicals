@@ -2,22 +2,23 @@
 
 ### List of Files
 
-- <u>Model Based</u>
 
-Model_Based.ipynb
-Model_Based.py 
+* Model_Based.py 
+* qlearner.py
+* Model_Based.ipynb
+* QLearner.ipynb
 
 ### Run Procedures 
 
-- <u>Model Based:</u> 
+- <u>Model-Based:</u> 
 
 ```shell
-~/anaconda2/bin/python Model_Based.py
+python Model_Based.py
 ```
 
-- <u>Model Free</u>
+- <u>Model-Free</u>
 
 ```
-~/anaconda2/bin/python xxxxx.py
+python qlearner.py
 ```
 
