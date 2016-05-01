@@ -18,6 +18,6 @@ Model_Based.py
 - <u>Model Free</u>
 
 ```
-~/anaconda2/bin/python xxxxx.py
+~/anaconda2/bin/python QLearner.py
 ```
 
